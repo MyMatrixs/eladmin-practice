@@ -15,7 +15,7 @@ export default {
 
 <style>
 .main{
-    background-color: blueviolet;
+    background-color: rgba(137, 43, 226, 0.267);
     width: 200px;
     height: 200px;
     float: left;
