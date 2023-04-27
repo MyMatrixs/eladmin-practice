@@ -23,6 +23,5 @@ export default {
     top: 90px;
     left: 300px;
     font-family: fangsong;
-    
 }
 </style>
