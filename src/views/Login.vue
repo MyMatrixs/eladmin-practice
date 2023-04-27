@@ -4,7 +4,10 @@
     <el-header><h1>Eladmin仿制系统-更高级的Eladmin</h1></el-header>
     <el-container>
         <el-aside width="200px">侧边栏</el-aside>
-        <el-main>{{mydata}}</el-main>
+        <el-main>
+            <p>{{input}}</p>
+            <el-input v-model="input" placeholder="请输入内容"></el-input>
+        </el-main>
     </el-container>
     </el-container>
   </div>
@@ -16,7 +19,8 @@ export default {
     name:'LoginIn',
     data(){
         return{
-            mydata:"你好啊哈哈哈哈"
+            mydata:"你好啊",
+            input:''
         }
     }
 }
