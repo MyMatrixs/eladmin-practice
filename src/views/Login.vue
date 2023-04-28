@@ -1,24 +1,30 @@
 <template>
-  <div>
-    <el-container>
-    <el-header><h1>Eladmin仿制系统-更高级的Eladmin</h1></el-header>
-    <el-container>
-        <el-aside width="200px">侧边栏</el-aside>
-        <el-main>
-            <p>{{input}}</p>
-            <el-input v-model="input" placeholder="请输入内容"></el-input>
-        </el-main>
-    </el-container>
-    </el-container>
+  <div class="main" :style="{'backgroundImage' : 'url('+background+')'}">
+    <el-form class="mainForm" >
+      <el-header><h1>更高级的Eladmin</h1></el-header>
+      <el-form-item>
+        <el-input  placeholder="账号"><div icon-class="user" slot="prefix">1</div></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-input placeholder="密码"><div icon-class="user" slot="prefix">2</div></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-input placeholder="验证码"><div icon-class="user" slot="prefix">3</div></el-input>
+      </el-form-item>
+      <el-checkbox></el-checkbox> 
+      <el-form-item>
+        <el-button>提交</el-button>
+      </el-form-item>
+    </el-form>
   </div>
 </template>
 <script>
-
-
+import background from '@/assets/images/Billion-years-ago-Earth_1920x1200.jpg'
 export default {
     name:'LoginIn',
     data(){
         return{
+            background:background,
             mydata:"你好啊",
             input:''
         }
@@ -28,46 +34,21 @@ export default {
 
 <style>
 .main{
-    background-color: rgba(137, 43, 226, 0.267);
-    width: 200px;
-    height: 200px;
+    height: 100%;
+    width: 100%;
     float: left;
-    position: absolute;
-    top: 390px;
-    left: 300px;
-    font-family: fangsong;
+    background-size: cover;
+
 }
-  .el-header, .el-footer {
-    background-color: #B3C0D1;
-    color: #333;
-    text-align: center;
-    line-height: 60px;
-  }
-  
-  .el-aside {
-    background-color: #D3DCE6;
-    color: #333;
-    text-align: center;
-    line-height: 200px;
-  }
-  
-  .el-main {
-    background-color: #E9EEF3;
-    color: #333;
-    text-align: center;
-    line-height: 160px;
-  }
-  
-  body > .el-container {
-    margin-bottom: 40px;
-  }
-  
-  .el-container:nth-child(5) .el-aside,
-  .el-container:nth-child(6) .el-aside {
-    line-height: 260px;
-  }
-  
-  .el-container:nth-child(7) .el-aside {
-    line-height: 320px;
-  }
+.mainForm{
+  position: relative;
+  width: 400px;
+  height: auto;
+  margin: auto;
+  top: 50%;
+  margin-top: -150px;
+  background-color: rgba(255, 255, 255, 0.616);
+  padding: 20px;
+}
+
 </style>
