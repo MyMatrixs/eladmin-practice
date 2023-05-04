@@ -65,5 +65,7 @@ export default {
   background-color: rgba(255, 255, 255, 0.616);
   padding: 20px;
 }
-
+.el-header{
+  background-color: #ffffff00;
+}
 </style>
