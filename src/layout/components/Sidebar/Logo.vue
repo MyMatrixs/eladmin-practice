@@ -1,10 +1,13 @@
 <template>
-<div></div>
+  <div>Logo</div>
 </template>
 
 <script>
 export default {
+    name:"LogoDiv",
+    data(){
 
+    }
 }
 </script>
 
