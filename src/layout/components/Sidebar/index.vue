@@ -2,12 +2,17 @@
   <div>
     <LogoDiv/>
     <div>你好</div>
+    <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
+      <el-radio-button :label="false">展开</el-radio-button>
+      <el-radio-button :label="true">收起</el-radio-button>
+    </el-radio-group>
     <el-scrollbar style="height:90%" >
         <el-menu
           mode='vertical'
           unique-opened='false'
           :default-active='activeMenu'
           :background-color = 'bcColor'
+          :collapse="isCollapse"
         >
           <el-submenu index="1">
             <template slot="title">
@@ -55,8 +60,9 @@ export default {
     name:"SideBar",
     data(){
         return{
-            activeMenu:1,
+            activeMenu:0,
             bcColor:	"#ffffff",
+            isCollapse:false
         }
     }
 }
