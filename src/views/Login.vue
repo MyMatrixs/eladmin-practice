@@ -53,7 +53,7 @@ export default {
     width: 100%;
     float: left;
     background-size: cover;
-
+    text-align: center;
 }
 .mainForm{
   position: relative;

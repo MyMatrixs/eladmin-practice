@@ -37,6 +37,7 @@ body{
 .main{
   background-color: white;
   height: 100%;
+  text-align: left;
 }
 .container-SideBar{
     width: 250px;
