@@ -14,7 +14,6 @@ export default {
     },
     methods:{
         OpenOrClosedSideBar(){
-
             this.$store.commit('changeOpened')
             console.log(this.$store.state.Sidebar.opened)
         }
