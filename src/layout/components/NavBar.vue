@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 export default {
     name:'NavBar',
     data(){
@@ -15,9 +16,15 @@ export default {
     methods:{
         OpenOrClosedSideBar(){
             this.$store.commit('changeOpened')
-            console.log(this.$store.state.Sidebar.opened)
+            console.log(this.$store.state.app.Sidebar.opened)
+            console.log(this.siderbarRouters)
+
         }
-    }
+    },
+        computed:{
+      ...mapGetters([
+        'siderbarRouters'
+      ])}
 }
 </script>
 

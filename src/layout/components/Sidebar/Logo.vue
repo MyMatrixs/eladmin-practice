@@ -6,7 +6,7 @@
 export default {
     name:"LogoDiv",
     data(){
-
+      return{}
     }
 }
 </script>

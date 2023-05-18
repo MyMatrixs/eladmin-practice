@@ -4,7 +4,12 @@
 
 <script>
 export default {
-
+    name:'MainConter',
+    data(){
+        return{
+            
+        }
+    }
 }
 </script>
 
