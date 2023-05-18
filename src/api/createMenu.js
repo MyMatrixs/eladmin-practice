@@ -3,7 +3,7 @@ const menuTrees = [
       alwaysShow:true,
       component:'views/MyText.vue',
       title:'一级菜单一',
-      path:'/text',
+      path:'/text1',
       children:[
         {
           alwaysShow:true,
@@ -23,7 +23,7 @@ const menuTrees = [
       alwaysShow:true,
       component:'views/MyText.vue',
       title:'一级菜单二',
-      path:'/text',
+      path:'/text2',
       children:[
         {
           alwaysShow:true,
