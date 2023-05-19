@@ -1,9 +1,11 @@
 <template>
   <div v-if="item.alwaysShow">
     <template v-if="typeof(item.children)==='undefined'||(justOneShowChild(item.children)&&(!this.zerochild))">
-        <el-menu-item :index='item.path'>
-            <item :title="item.title"></item>
-        </el-menu-item>
+        <AppLink :to="item.path">
+            <el-menu-item :index='item.path'>
+                <item :title="item.title"></item>
+            </el-menu-item>
+        </AppLink>
     </template>
     <el-submenu v-else :index='item.path'>
         <template slot="title">
@@ -16,8 +18,9 @@
 
 <script>
 import item from './item.vue'
+import AppLink from './Link.vue'
 export default {
-  components: { item },
+  components: { item,AppLink },
     name:"SiderbarItem",
     data(){
         return{
