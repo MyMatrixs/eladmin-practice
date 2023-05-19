@@ -2,6 +2,12 @@ const menuTrees = [
     {
       alwaysShow:true,
       component:'views/MyText.vue',
+      title:'首页',
+      path:'/text1',
+    },
+    {
+      alwaysShow:true,
+      component:'views/MyText.vue',
       title:'一级菜单一',
       path:'/text1',
       children:[

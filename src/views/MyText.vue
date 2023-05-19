@@ -15,6 +15,6 @@ export default {
 
 <style>
 .main{
-  background-color: aquamarine;
+
 }
 </style>

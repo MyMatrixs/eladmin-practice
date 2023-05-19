@@ -1,7 +1,7 @@
 <template>
   <div>
     <LogoDiv/>
-    <div>你好</div>
+    <div>主界面</div>
     <el-scrollbar style="height:90%" >
         <el-menu
           mode='vertical'

@@ -18,7 +18,7 @@ export default {
             this.$store.commit('changeOpened')
             console.log(this.$store.state.app.Sidebar.opened)
             console.log(this.siderbarRouters)
-
+            this.$emit('changeWidth',this.$store.state.app.Sidebar.opened)
         }
     },
         computed:{

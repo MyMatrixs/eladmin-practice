@@ -1,9 +1,9 @@
 <template>
   <div class="main">
     <el-container style="height:100%">
-        <SideBar class='container-SideBar'/>
+        <SideBar class='container-SideBar' :style="{'width':sideBarWith+'px' }"/>
         <div class="container">
-          <NavBar class="NavBar"/>
+          <NavBar @changeWidth="changeSideBarwidth" class="NavBar"/>
           <MainApp class='container-MainApp'/>
         </div>
 
@@ -23,7 +23,18 @@ export default {
   },
   data(){
     return{
-      mydata:'你好'
+      mydata:'你好',
+      sideBarWith:"250",
+    }
+  },
+  methods:{
+    changeSideBarwidth(value){
+      console.log(value)
+      if(value){
+        this.sideBarWith="50"
+      }else{
+        this.sideBarWith="250"
+      }
     }
   }
 }
@@ -46,7 +57,6 @@ body{
 
 }
 .container{
-
     height: 100%;
     width: 100%;
     background-color: rgba(255, 0, 0, 0.171);
@@ -54,12 +64,11 @@ body{
 .NavBar{
   width: 100%;
   height: 60px;
-
 }
 .container-MainApp{
     width: 100%;
-    height: 100%;
-    padding-top: 60px;
+    height: 90%;
+    margin-top: 0px;
     background-color: rgba(0, 255, 76, 0.171);
 }
 </style>
