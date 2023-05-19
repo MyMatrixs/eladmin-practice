@@ -1,7 +1,7 @@
 <template>
   <div class="main" :style="{'backgroundImage' : 'url('+background+')'}">
     <el-form class="mainForm" :model='logonForm' >
-      <el-header><h1>更高级的Eladmin</h1></el-header>
+      <el-header><h1>系统登录</h1></el-header>
       <el-form-item>
         <el-input placeholder="账号" v-model="logonForm.username" type="text"><div icon-class="user" slot="prefix">1</div></el-input>
       </el-form-item>
