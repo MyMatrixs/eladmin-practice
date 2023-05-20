@@ -1,24 +1,28 @@
 const menuTrees = [
     {
       alwaysShow:true,
-      component:'views/MyText.vue',
+      name:'首页',
+      component:'layout/index.vue',
       title:'首页',
-      path:'/text1',
+      path:'/te',
     },
     {
       alwaysShow:true,
-      component:'views/MyText.vue',
+      name:'一级菜单一',
+      component:'layout/index.vue',
       title:'一级菜单一',
-      path:'/text1',
+      path:'/ta',
       children:[
         {
           alwaysShow:true,
+          name:'二级菜单一',
           component:'views/MyText.vue',
           title:'二级菜单一',
           path:'/text',
         },
         {
           alwaysShow:true,
+          name:'二级菜单二',
           component:'views/MyText.vue',
           title:'二级菜单二',
           path:'/text',
@@ -27,24 +31,28 @@ const menuTrees = [
     },
     {
       alwaysShow:true,
-      component:'views/MyText.vue',
+      name:'一级菜单二',
+      component:'layout/index.vue',
       title:'一级菜单二',
       path:'/text2',
       children:[
         {
           alwaysShow:true,
+          name:'二级菜单一2',
           component:'views/MyText.vue',
           title:'二级菜单一',
           path:'/text',
         },
         {
           alwaysShow:true,
+          name:'二级菜单二2',
           component:'views/MyText.vue',
           title:'二级菜单二',
           path:'/text',
         },
         {
           alwaysShow:true,
+          name:'二级菜单三2',
           component:'views/MyText.vue',
           title:'二级菜单三',
           path:'/text',

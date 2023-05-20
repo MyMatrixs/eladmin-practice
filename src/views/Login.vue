@@ -40,6 +40,7 @@ export default {
     methods:{
       loginIn(){
         if(this.logonForm.username=='默认用户'&&this.logonForm.password=='123456'){
+          console.log('点击')
           this.$router.push({ path: '/Main' })
         }
       }

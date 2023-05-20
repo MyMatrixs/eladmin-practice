@@ -9,9 +9,9 @@ const permission={
     },
     mutations:{
         SET_SIDEBAR_ROUTERS:(state,routers)=>{
-
+            state.addRouters = routers
             state.siderbarRouters = routerMAP.concat(routers)
-
+            state.routers = routerMAP.concat(routers)
         }
     },
     actions:{
@@ -28,8 +28,11 @@ export default permission
 
 export const filterAsyncRouter = (routers)=>{
     return routers.filter(router =>{
+
         if(router.component){
-            router.component = loadView(router.component)
+            if(typeof(router.component)=="string"){
+                router.component = loadView(router.component)
+            }
         }
         if(!(typeof router.children === 'undefined')){
             router.children  = filterAsyncRouter(router.children)
@@ -38,5 +41,6 @@ export const filterAsyncRouter = (routers)=>{
     })
 }
 export const loadView = (path)=>{
-    return import('../../'+path)
+    console.log('../../'+path)
+    return () => import('../../'+path)
 }

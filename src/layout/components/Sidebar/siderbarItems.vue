@@ -11,7 +11,7 @@
         <template slot="title">
             <item :title="item.title"></item>
         </template>
-        <SiderbarItem v-for="child in item.children" :key="child.title" :item="child" :basePath="child.path"></SiderbarItem>
+        <SiderbarItem v-for="child in item.children" :key="child.title" :item="child" :basePath="resovePath(child.path)"></SiderbarItem>
     </el-submenu>
   </div>
 </template>
@@ -55,6 +55,10 @@ export default {
                 this.zerochild=true
             }
             return false
+        },
+        resovePath(routepath){
+            console.log(this.basePath+'/'+routepath)
+            return this.basePath+'/'+routepath
         }
     }
 }
