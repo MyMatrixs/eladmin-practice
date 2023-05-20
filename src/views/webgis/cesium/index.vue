@@ -1,10 +1,10 @@
 <template>
-    <div>首页</div>
+  <div>Cesium</div>
 </template>
 
 <script>
 export default {
-    name:'MainConter',
+    name:'CesiumWebgis',
     data(){
         return{
             

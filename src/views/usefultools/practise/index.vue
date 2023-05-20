@@ -1,10 +1,10 @@
 <template>
-    <div>首页</div>
+  <div>practise</div>
 </template>
 
 <script>
 export default {
-    name:'MainConter',
+    name:'PractiseTool',
     data(){
         return{
             

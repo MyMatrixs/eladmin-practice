@@ -10,17 +10,13 @@ export const routerMAP = [
       alwaysShow:false,
       path: '/Main',
       name: 'Main',
+      redirect: '/dashboard',
       component: ()=>import('../layout/index.vue'),
       children:[
         {
-          component:import('../views/MyText.vue'),
-          title:'二级菜单一',
-          path:'first',
-        },
-        {
-          component:import('../views/MyText.vue'),
-          title:'second',
-          path:'second',
+          component: () =>  import('../views/Main.vue'),
+          title:'dashboard',
+          path:'/dashboard',
         }
       ]
     },

@@ -1,10 +1,10 @@
 <template>
-    <div>首页</div>
+  <div>Leaflet</div>
 </template>
 
 <script>
 export default {
-    name:'MainConter',
+    name:'LeafletWebgis',
     data(){
         return{
             

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <div>主页</div>
     <router-view :key="key"/>
   </div>
 </template>

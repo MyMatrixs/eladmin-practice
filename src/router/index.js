@@ -20,8 +20,6 @@ console.log(router)
 
 
 router.beforeEach((to,from,next)=>{
-  console.log(11111111111111)
-  console.log(to)
   if(to.name==='home'){
     loadMenus(menuTrees)
   }

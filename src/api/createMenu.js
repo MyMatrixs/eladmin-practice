@@ -1,64 +1,88 @@
 const menuTrees = [
     {
       alwaysShow:true,
-      name:'首页',
+      name:'AA',
       component:'layout/index.vue',
       title:'首页',
-      path:'/te',
+      path:'/Main',
+      redirect: '/dashboard',
     },
     {
       alwaysShow:true,
-      name:'一级菜单一',
+      name:'系统管理',
       component:'layout/index.vue',
-      title:'一级菜单一',
-      path:'/ta',
+      title:'系统管理',
+      path:'/system',
       children:[
         {
           alwaysShow:true,
-          name:'二级菜单一',
-          component:'views/MyText.vue',
-          title:'二级菜单一',
-          path:'/text',
+          name:'菜单管理',
+          component:'views/system/menu/index.vue',
+          title:'菜单管理',
+          path:'/menu',
         },
         {
           alwaysShow:true,
-          name:'二级菜单二',
+          name:'用户管理',
+          component:'views/system/user/index.vue',
+          title:'用户管理',
+          path:'/user',
+        }
+      ]
+    },
+    {
+      alwaysShow:true,
+      name:'WebGIS模块',
+      component:'layout/index.vue',
+      title:'WebGIS模块',
+      path:'/webgis',
+      children:[
+        {
+          alwaysShow:true,
+          name:'cesium',
+          component:'views/webgis/cesium/index.vue',
+          title:'cesium',
+          path:'/cesium',
+        },
+        {
+          alwaysShow:true,
+          name:'leaflet',
+          component:'views/webgis/leaflet/index.vue',
+          title:'leaflet',
+          path:'/leaflet',
+        },
+        {
+          alwaysShow:true,
+          name:'测试',
           component:'views/MyText.vue',
-          title:'二级菜单二',
+          title:'测试',
           path:'/text',
         }
       ]
     },
     {
       alwaysShow:true,
-      name:'一级菜单二',
+      name:'实用工具',
       component:'layout/index.vue',
-      title:'一级菜单二',
-      path:'/text2',
+      title:'实用工具',
+      path:'/tools',
       children:[
         {
           alwaysShow:true,
-          name:'二级菜单一2',
-          component:'views/MyText.vue',
-          title:'二级菜单一',
-          path:'/text',
+          name:'practise',
+          component:'views/usefultools/practise/index.vue',
+          title:'practise',
+          path:'/practise',
         },
         {
           alwaysShow:true,
-          name:'二级菜单二2',
-          component:'views/MyText.vue',
-          title:'二级菜单二',
-          path:'/text',
+          name:'time',
+          component:'views/usefultools/time/index.vue',
+          title:'time',
+          path:'/time',
         },
-        {
-          alwaysShow:true,
-          name:'二级菜单三2',
-          component:'views/MyText.vue',
-          title:'二级菜单三',
-          path:'/text',
-        }
       ]
-    }
+    },
   ]
 
   export default menuTrees
