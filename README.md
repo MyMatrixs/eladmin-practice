@@ -20,6 +20,11 @@ components下面的index.js的作用是把components下面的组件归类提取�
 内容容器从上到下应该分为三个部分，第一个是标题栏，第二个是导航栏，第三个是内容窗口，目前内容还没有开始写，只有一个折叠菜单的按钮有实际的作用。
 ### 1.2 VUEX结构
 VUEX用来进行全局变量的管理，目录在store/index.js中，目前与其有关的只有折叠菜单按钮。
+### 1.4 功能菜单
+#### 1.4.2WebGIS
+##### 1.4.2.1cesium
+初始化Cesium地图，目前可以正常显示地球体，
+注意：如果要显示地图，需要把cesium的一些静态文件进行发布，做法是，把\node_modules\cesium\Build\Cesium的整个Cesium文件夹拷贝到public\static文件夹下面，static文件夹需要自己创建
 ## Project setup
 ```
 npm install
