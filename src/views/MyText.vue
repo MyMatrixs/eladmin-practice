@@ -1,20 +1,26 @@
 <template>
-  <div class="main">测试{{mydata}}</div>
+  <div class="main">
+
+  </div>
 </template>
 
 <script>
+
 export default {
   name: 'MyText',
-  data(){
-    return{
-      mydata:'你好'
+
+  data() {
+    return {
+      mydata: '你好'
     }
   }
 }
 </script>
 
 <style>
-.main{
+.main {
+  width: 500px;
+  height: 500px;
 
 }
 </style>
