@@ -1,8 +1,10 @@
 <template>
   <div>
-    <LogoDiv/>
-    <div>主界面</div>
-    <el-scrollbar style="height:90%" >
+    <div class="titleAndLogo">
+          <LogoDiv/>
+          <div>主页面</div>
+    </div>
+    <el-scrollbar class="scrollbar">
         <el-menu
           mode='vertical'
           :default-active='activeMenu'
@@ -42,5 +44,13 @@ export default {
 </script>
 
 <style>
-
+.titleAndLogo{
+  height: 60px;
+  position: fixed;
+}
+.scrollbar{
+   height:100%;
+   margin-top:60px;
+   position: relative;
+}
 </style>
