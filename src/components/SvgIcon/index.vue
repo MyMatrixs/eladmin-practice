@@ -10,7 +10,7 @@
 import { isExternal } from '@/utils/validate'
 /* eslint-disable */
 export default {
-    name: 'svg-icon',
+    name: 'SvgIcon',
     props: {
         iconClass: {
             type: String,

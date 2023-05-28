@@ -6,7 +6,6 @@
 import echarts from 'echarts'
 require('echarts/theme/macarons') // echarts theme
 import resize from './mixins/resize'
-console.log(echarts)
 export default {
     name: "line-chart",
     mixins: [resize],
@@ -59,7 +58,6 @@ export default {
     },
     methods: {
         initChart() {
-            console.log(echarts)
             var chartDom = document.getElementById('main');
             this.chart = echarts.init(chartDom)
             this.setOptions(this.chartData)
