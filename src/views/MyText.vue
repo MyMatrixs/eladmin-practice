@@ -1,6 +1,6 @@
 <template>
-  <div class="main">
-
+  <div class="textmain">
+    测试
   </div>
 </template>
 
@@ -18,7 +18,7 @@ export default {
 </script>
 
 <style>
-.main {
+.textmain {
   width: 500px;
   height: 500px;
 

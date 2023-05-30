@@ -39,10 +39,24 @@ export default {
     },
     methods:{
       loginIn(){
-        if(this.logonForm.username=='默认用户'&&this.logonForm.password=='123456'){
-          console.log('点击')
-          this.$router.push({ path: '/Main' })
+        const user ={
+          username:this.logonForm.username,
+          password:this.logonForm.password,
+          remeberMe:false,
+          code:1,
+          uuid:'11111'
         }
+        this.$store.dispatch('Login',user).then(res=>{
+          console.log(res)
+
+        }).catch(err=>{
+          console.log(err)
+          if(this.logonForm.username=='默认用户'&&this.logonForm.password=='123456'){
+            console.log('点击')
+            this.$router.push({ path: '/Main' })
+          }
+        })
+
       }
     }
 }

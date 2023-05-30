@@ -46,7 +46,9 @@ export default {
 <style>
 .titleAndLogo{
   height: 60px;
-  position: fixed;
+  width: 100%;
+  text-align: center;
+  position: absolute;
 }
 .scrollbar{
    height:100%;
