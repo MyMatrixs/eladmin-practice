@@ -20,14 +20,17 @@
 </template>
 <script>
 import background from '@/assets/images/Billion-years-ago-Earth_1920x1200.jpg'
+import{getCodeImg} from '@/api/Login'
+import Cookies from 'js-cookie'
 export default {
     name:'LoginIn',
     data(){
         return{
             background:background,
+            cookiePass:'',
             mydata:"你好啊",
             input:'',
-
+            codeURL:'',
             logonForm:{
               username:'默认用户',
               password:'123456',
@@ -57,6 +60,37 @@ export default {
           }
         })
 
+      },
+      getCode(){
+        getCodeImg().then(res=>{
+          this.codeURL = res.getCodeImg
+          this.logonForm.uuid = res.uuid
+        })
+      },
+      getCookie(){
+        const username = Cookies.get('username')
+        let password = Cookies.get('password')
+        const remeberMe = Cookies.get('remeberMe')
+        this.cookiePass = password===undefined?'':password
+        password = password===undefined?this.logonForm.password:password
+        this.logonForm={
+          username:username===undefined?this.logonForm.username:username,
+          password:password,
+          remeberMe:remeberMe===undefined?false:Boolean(remeberMe),
+          code:''
+        }
+      },
+      point(){
+        const point = Cookies.get('point')!==undefined
+        if(point){
+          this.$notify({
+            title:'提示',
+            message:'当前登录已过期，请重新登录',
+            type:'warning',
+            duration:5000
+          })
+          Cookies.remove('point')
+        }
       }
     }
 }
