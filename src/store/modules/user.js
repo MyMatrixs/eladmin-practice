@@ -31,6 +31,8 @@ const user = {
                     setToken(res.toKen,rememberMe)
                     context.commit('SET_TOKEN',res.toKen)
                     setUserInfo(res,context)
+                    context.commit('SET_LOAD_MENUS', true)
+                    resolve()
                 }).catch(error=>{
                     reject(error)
                 })

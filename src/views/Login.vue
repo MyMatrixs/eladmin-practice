@@ -20,6 +20,7 @@
   </div>
 </template>
 <script>
+import {encrypt} from '@/utils/rsaEncrypt'
 import background from '@/assets/images/Billion-years-ago-Earth_1920x1200.jpg'
 import{getCodeImg} from '@/api/Login'
 import Cookies from 'js-cookie'
@@ -55,12 +56,14 @@ export default {
           username:this.logonForm.username,
           password:this.logonForm.password,
           remeberMe:false,
-          code:1,
-          uuid:'11111'
+          code:this.logonForm.code,
+          uuid:this.logonForm.uuid
+        }
+        if(user.password!== this.cookiePass){
+          user.password = encrypt(user.password)
         }
         this.$store.dispatch('Login',user).then(res=>{
           console.log(res)
-
         }).catch(err=>{
           console.log(err)
           if(this.logonForm.username=='默认用户'&&this.logonForm.password=='123456'){
