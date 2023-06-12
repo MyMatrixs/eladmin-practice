@@ -10,6 +10,7 @@
       </el-form-item>
       <el-form-item>
         <el-input placeholder="验证码" v-model="logonForm.code"><div icon-class="user" slot="prefix">3</div></el-input>
+        <div><img :src="codeURL" @click="getCode"></div>
       </el-form-item>
       <el-checkbox style="float:left" v-model="logonForm.remeberMe">记住密码</el-checkbox> 
       <el-form-item>
@@ -71,7 +72,7 @@ export default {
       },
       getCode(){
         getCodeImg().then(res=>{
-          this.codeURL = res.getCodeImg
+          this.codeURL = res.img
           this.logonForm.uuid = res.uuid
         })
       },
