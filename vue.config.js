@@ -4,9 +4,29 @@ const { defineConfig } = require('@vue/cli-service')
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
-
+const port = 88
 module.exports = defineConfig({
   transpileDependencies: true,
+  devServer:{
+    port:port,
+    open:true,
+    proxy:{
+      '/auth':{
+        target:'https://eladmin.vip/',
+        changeOrigin:true,
+        pathRewrite:{
+          '^/auth':"auth"
+        }
+      },
+      '/api':{
+        target:'https://eladmin.vip/',
+        changeOrigin:true,
+        pathRewrite:{
+          '^/api':"api"
+        }
+      }
+    }
+  },
   configureWebpack() {
     return {
       resolve: {

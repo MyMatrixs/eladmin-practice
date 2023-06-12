@@ -40,6 +40,14 @@ export default {
             }
         }
     },
+    created(){
+      console.log('获取下验证码')
+      this.getCode()
+      console.log('获取cookise')
+      this.getCookie()
+      console.log('获取过期信息')
+      this.point()
+    },
     methods:{
       loginIn(){
         const user ={
