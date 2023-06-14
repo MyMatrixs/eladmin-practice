@@ -8,6 +8,10 @@ const service = axios.create({
 
 service.interceptors.request.use(config=>{
     console.log('进入拦截器喽')
+    if(getToken()){
+        config.headers['Authorization'] = getToken()
+    }
+    config.headers['Content-Type'] = 'application/json'
     return config
 },err=>{
     Promise.reject(err)

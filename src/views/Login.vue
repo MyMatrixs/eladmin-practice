@@ -34,7 +34,7 @@ export default {
             input:'',
             codeURL:'',
             logonForm:{
-              username:'默认用户',
+              username:'admin',
               password:'123456',
               code:'',
               remeberMe:false,
@@ -60,22 +60,20 @@ export default {
           uuid:this.logonForm.uuid
         }
         if(user.password!== this.cookiePass){
-          user.password = encrypt(user.password)
+          //user.password = encrypt(user.password)
         }
         this.$store.dispatch('Login',user).then(res=>{
           console.log(res)
+          this.$router.push({ path: '/Main' })
         }).catch(err=>{
           console.log(err)
-          if(this.logonForm.username=='默认用户'&&this.logonForm.password=='123456'){
-            console.log('点击')
-            this.$router.push({ path: '/Main' })
-          }
+
         })
 
       },
       getCode(){
         getCodeImg().then(res=>{
-          this.codeURL = res.img
+          this.codeURL = 'data:image/png;base64,'+res.img
           this.logonForm.uuid = res.uuid
         })
       },

@@ -7,6 +7,7 @@ export function getToken(){
     return Cookies.get(TokenKey)
 }
 export function setToken(token,rememberMe){
+    console.log(token,rememberMe)
     if(rememberMe){
         return Cookies.set(TokenKey,token,{expires:config.tokenCookieExpires})
     }else{

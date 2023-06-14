@@ -26,17 +26,28 @@ const user = {
     actions:{
         Login(context,userInfo){
             const rememberMe = userInfo.rememberMe
-            return new Promise((resolve,reject)=>{
-                login(userInfo.username,userInfo.password,userInfo.code,userInfo.uuid).then(res=>{
-                    setToken(res.toKen,rememberMe)
-                    context.commit('SET_TOKEN',res.toKen)
-                    setUserInfo(res,context)
-                    context.commit('SET_LOAD_MENUS', true)
+            const longiner = new Promise((resolve,reject)=>{
+                const loginer = login(userInfo.username,userInfo.password,userInfo.code,userInfo.uuid).then(res=>{
+                    setToken(res.token,rememberMe)
+                    context.commit('SET_TOKEN',res.token)
                     resolve()
                 }).catch(error=>{
                     reject(error)
                 })
             })
+            longiner.then(value=>{
+                return new Promise((resolve,reject)=>{
+                    getInfo().then(res=>{
+                        console.log(res)
+                        setUserInfo(res,context)
+                        context.commit('SET_LOAD_MENUS', true)
+                        resolve()
+                    })
+                }).catch(error=>{
+                    console.log('设定用户信息失败')
+                })
+            })
+
         },
         GetInfo(context){
             return new Promise((resolve,reject)=>{

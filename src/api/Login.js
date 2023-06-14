@@ -3,7 +3,7 @@ import requset from '../utils/request'
 export function login(username,password,code,uuid){
     return requset({
         url:'auth/login',
-        method:'psot',
+        method:'post',
         data:{
             username,
             password,

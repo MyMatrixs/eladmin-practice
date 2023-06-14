@@ -12,14 +12,14 @@ module.exports = defineConfig({
     open:true,
     proxy:{
       '/auth':{
-        target:'https://eladmin.vip/',
+        target:'http://47.120.14.248:9000/',
         changeOrigin:true,
         pathRewrite:{
           '^/auth':"auth"
         }
       },
       '/api':{
-        target:'https://eladmin.vip/',
+        target:'http://47.120.14.248:9000/',
         changeOrigin:true,
         pathRewrite:{
           '^/api':"api"
