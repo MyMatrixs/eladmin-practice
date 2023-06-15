@@ -3,7 +3,7 @@ export const routerMAP = [
     {
       alwaysShow:false,
       path: '/',
-      name: 'home',
+      name: 'login',
       component: ()=>import('../views/Login.vue')
     },
     {
