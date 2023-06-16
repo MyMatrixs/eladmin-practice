@@ -3,7 +3,12 @@
     <el-container style="height:100%">
         <SideBar class='container-SideBar' :style="{'width':sideBarWith+'px' }"/>
         <div class="container" :style="{'margin-left':sideBarWith+'px'}">
-          <NavBar @changeWidth="changeSideBarwidth" class="NavBar"/>
+          <div class="fixheader" @changeWidth="changeSideBarwidth">
+            <NavBar @changeWidth="changeSideBarwidth" class="NavBar"/>
+            <div style="clear:both"></div>
+            <div>导航栏</div>
+          </div>
+
           <MainApp class='container-MainApp'/>
         </div>
 
@@ -65,15 +70,18 @@ body{
     background-color: rgba(255, 0, 0, 0.171);
     position: relative;
 }
-.NavBar{
+.fixheader{
   width: 100%;
-  height: 60px;
-  position: fixed;
+  height: 80px;
+  position: absolute;
+}
+.NavBar{
+
 }
 .container-MainApp{
     width: 100%;
     height: 100%;
-    margin-top: 60px;
+    margin-top: 80px;
     position: relative;
     background-color: rgba(0, 255, 76, 0.171);
 }
