@@ -1,7 +1,7 @@
 <template>
   <div v-if="item.alwaysShow">
     <template v-if="typeof(item.children)==='undefined'||(justOneShowChild(item.children)&&(!this.zerochild))">
-        <AppLink :to="item.path">
+        <AppLink :to="basePath">
             <el-menu-item :index='item.path'>
                 <item :title="item.title"></item>
             </el-menu-item>

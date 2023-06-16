@@ -26,25 +26,26 @@ const user = {
     actions:{
         Login(context,userInfo){
             const rememberMe = userInfo.rememberMe
-            const longiner = new Promise((resolve,reject)=>{
+            
+            return new Promise((resolve,reject)=>{
                 const loginer = login(userInfo.username,userInfo.password,userInfo.code,userInfo.uuid).then(res=>{
                     setToken(res.token,rememberMe)
                     context.commit('SET_TOKEN',res.token)
-                    resolve()
-                }).catch(error=>{
-                    reject(error)
                 })
-            })
-            longiner.then(value=>{
-                return new Promise((resolve,reject)=>{
+                loginer.then(value=>{
                     getInfo().then(res=>{
                         console.log(res)
                         setUserInfo(res,context)
                         context.commit('SET_LOAD_MENUS', true)
                         resolve()
+                    }).catch(error=>{
+                        console.log('设定用户信息失败')
+                        reject(error)
+    
                     })
-                }).catch(error=>{
-                    console.log('设定用户信息失败')
+                })
+                loginer.catch(error=>{
+                    reject(error)
                 })
             })
 
@@ -71,7 +72,11 @@ const user = {
             })
 
         },
-        updateLoadMenus(context){}
+        updateLoadMenus(context){
+            return new Promise((resolve, reject) => {
+                context.commit('SET_LOAD_MENUS', false)
+            })
+        }
     }
 }
 
@@ -82,12 +87,14 @@ export const logOut = (context)=>{
 }
 
 export const setUserInfo = (res,context)=>{
-    if(res.roles.length ===0){
-        context.commit('SET_ROLES',['ROLE_SYSTEM_DEFAULT'])
+    if(res.roles){
+        if(res.roles.length ===0){
+            context.commit('SET_ROLES',['ROLE_SYSTEM_DEFAULT'])
+        }
+        else{
+            context.commit('SET_ROLES',res.roles)
+        }
     }
-    else{
-        context.commit('SET_ROLES',res.roles)
-    }
-    context.commit('SET_USER',res.user)
+    context.commit('SET_USER',res)
 }
 export default user

@@ -19,14 +19,14 @@ const menuTrees = [
           name:'菜单管理',
           component:'views/system/menu/index.vue',
           title:'菜单管理',
-          path:'/menu',
+          path:'menu',
         },
         {
           alwaysShow:true,
           name:'用户管理',
           component:'views/system/user/index.vue',
           title:'用户管理',
-          path:'/user',
+          path:'user',
         }
       ]
     },
@@ -42,21 +42,21 @@ const menuTrees = [
           name:'cesium',
           component:'views/webgis/cesium/index.vue',
           title:'cesium',
-          path:'/cesium',
+          path:'cesium',
         },
         {
           alwaysShow:true,
           name:'leaflet',
           component:'views/webgis/leaflet/index.vue',
           title:'leaflet',
-          path:'/leaflet',
+          path:'leaflet',
         },
         {
           alwaysShow:true,
           name:'测试',
           component:'views/MyText.vue',
           title:'测试',
-          path:'/text',
+          path:'text',
         }
       ]
     },
@@ -72,14 +72,14 @@ const menuTrees = [
           name:'practise',
           component:'views/usefultools/practise/index.vue',
           title:'practise',
-          path:'/practise',
+          path:'practise',
         },
         {
           alwaysShow:true,
           name:'time',
           component:'views/usefultools/time/index.vue',
           title:'time',
-          path:'/time',
+          path:'time',
         },
       ]
     },

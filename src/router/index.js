@@ -21,14 +21,18 @@ console.log(router)
 
 const writelist =['/']
 router.beforeEach((to,from,next)=>{
-  console.log(to,from,getToken())
+  console.log('当前路由路径：',to,from)
   if(getToken()){
+    console.log('获取到了token')
+    console.log('loadMenus',store.getters.loadMenus)
+    console.log('user.username',!store.getters.user.username)
     if(to.name==='login'){
       next({path:'/Main'})
     }else{
-      if(store.getters.rols.length===0){
+      if(!store.getters.user.username){
         store.dispatch('GetInfo').then(()=>{
-          loadMenus(menuTrees)
+          store.dispatch('updateLoadMenus')
+          loadMenus(menuTrees,next,to)
         }).catch(
           err=>{
             store.dispatch('LogOut').then(()=>{
@@ -36,13 +40,22 @@ router.beforeEach((to,from,next)=>{
             })
           }
         )
+      }else if(store.getters.loadMenus){
+        console.log('已经获取信息，还没加载菜单')
+        store.dispatch('updateLoadMenus')
+        loadMenus(menuTrees,next,to)
+      }else{
+        console.log('已经获取信息，加载了菜单')
+        next()
       }
     }
   }else{
+    console.log('没获取到了token')
     if(writelist.indexOf(to.path)!==-1){
       next()
     }else{
       console.log(`/?redirect=${to.fullPath}`)
+      next(`/?redirect=${to.fullPath}`)
     }
   }
 
@@ -77,15 +90,14 @@ router.beforeEach((to,from,next)=>{
 export default router
 
 
-export const loadMenus = (menuTree)=>{
+export const loadMenus = (menuTree,next,to)=>{
   const newRouter = filterAsyncRouter(menuTree)
   console.log(newRouter)
   for(let i=0;i<newRouter.length;i++){
-    console.log(i)
-    console.log(newRouter[i])
     router.addRoute(newRouter[i])
   }
   console.log(router)
   store.dispatch('SetSiderbarRouter',menuTree)
+  next({ ...to, replace: true })
 
 }

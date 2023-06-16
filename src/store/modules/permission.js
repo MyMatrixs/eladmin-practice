@@ -28,7 +28,6 @@ export default permission
 
 export const filterAsyncRouter = (routers)=>{
     return routers.filter(router =>{
-
         if(router.component){
             if(typeof(router.component)=="string"){
                 router.component = loadView(router.component)
@@ -41,6 +40,5 @@ export const filterAsyncRouter = (routers)=>{
     })
 }
 export const loadView = (path)=>{
-    console.log('../../'+path)
     return () => import('../../'+path)
 }

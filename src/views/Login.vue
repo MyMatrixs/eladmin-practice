@@ -8,9 +8,9 @@
       <el-form-item>
         <el-input  placeholder="密码" v-model="logonForm.password" type = "password"><div icon-class="user" slot="prefix">2</div></el-input>
       </el-form-item>
-      <el-form-item>
-        <el-input placeholder="验证码" v-model="logonForm.code"><div icon-class="user" slot="prefix">3</div></el-input>
-        <div><img :src="codeURL" @click="getCode"></div>
+      <el-form-item >
+        <el-input placeholder="验证码" v-model="logonForm.code" style="width:66%;float:left"><div icon-class="user" slot="prefix">3</div></el-input>
+        <div class="codeImg"><img :src="codeURL" @click="getCode"></div>
       </el-form-item>
       <el-checkbox style="float:left" v-model="logonForm.remeberMe">记住密码</el-checkbox> 
       <el-form-item>
@@ -63,7 +63,7 @@ export default {
           //user.password = encrypt(user.password)
         }
         this.$store.dispatch('Login',user).then(res=>{
-          console.log(res)
+          console.log('登录',res)
           this.$router.push({ path: '/Main' })
         }).catch(err=>{
           console.log(err)
@@ -73,7 +73,7 @@ export default {
       },
       getCode(){
         getCodeImg().then(res=>{
-          this.codeURL = 'data:image/png;base64,'+res.img
+          this.codeURL = res.img
           this.logonForm.uuid = res.uuid
         })
       },
@@ -116,7 +116,7 @@ export default {
 }
 .mainForm{
   position: relative;
-  width: 400px;
+  width: 400px; 
   height: auto;
   margin: auto;
   top: 50%;
@@ -126,5 +126,9 @@ export default {
 }
 .el-header{
   background-color: #ffffff00;
+}
+.codeImg{
+  width: 33%;
+  float: left;
 }
 </style>
