@@ -20,7 +20,20 @@ export const routerMAP = [
         }
       ]
     },
-
+    {
+      alwaysShow:false,
+      path: '/user',
+      name: '用户',
+      component: ()=>import('../layout/index.vue'),
+      children:[
+        {
+          component: () =>  import('../views/system/user/center.vue'),
+          title:'usercenter',
+          path:'center',
+          name:'用户中心'
+        }
+      ]
+    },
     {
       alwaysShow:false,
       path: '/about',
@@ -29,14 +42,6 @@ export const routerMAP = [
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue'),
-      children:[
-        {
-          component: () =>  import('../views/MyText.vue'),
-          title:'dashboard',
-          path:'children',
-        }
-      ]
-
     },
 
   ]
