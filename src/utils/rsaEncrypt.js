@@ -1,7 +1,6 @@
 import JSEncrypt from "jsencrypt";
 
-const publicKey = 'MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBANL378k3RiZHWx5AfJqdH9xRNBmD9wGD\n' +
-  '2iRe41HdTNF8RUhNnHit5NpMNtGL0NPTSSpPjjI1kJfVorRvaQerUgkCAwEAAQ=='
+const publicKey = 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCS2+mtHVwPj3bN/8rmf+MWD6r5/pBNCTuQ8FQwT+LL5OIghn6JznYDjHjeet/dH6+yTMXxdFXIg4yDnqVQhl+Ok+BdybrbdG0xPs/6R7/7LoB+LYRxSe5yHwccMgCNZCNEAokdtUrqKzcl9AYvGXwaZ3dGonYJ3yKwlxfvC8viQwIDAQAB'
 
 export function encrypt(txt){
     const encryptor = new JSEncrypt()

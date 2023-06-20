@@ -29,6 +29,7 @@ const user = {
             
             return new Promise((resolve,reject)=>{
                 const loginer = login(userInfo.username,userInfo.password,userInfo.code,userInfo.uuid).then(res=>{
+                    console.log('设定token为:',res.token)
                     setToken(res.token,rememberMe)
                     context.commit('SET_TOKEN',res.token)
                 })
