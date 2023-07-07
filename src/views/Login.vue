@@ -60,7 +60,7 @@ export default {
           uuid:this.logonForm.uuid
         }
         if(user.password!== this.cookiePass){
-          //user.password = encrypt(user.password)
+          user.password = encrypt(user.password)
         }
         this.$store.dispatch('Login',user).then(res=>{
           console.log('登录',res)
