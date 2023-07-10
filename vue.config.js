@@ -12,14 +12,14 @@ module.exports = defineConfig({
     open:true,
     proxy:{
       '/auth':{
-        target:'http://47.120.14.248:9000/',
+        target:'http://localhost:9000/',
         changeOrigin:true,
         pathRewrite:{
           '^/auth':"auth"
         }
       },
       '/api':{
-        target:'http://47.120.14.248:9000/',
+        target:'http://localhost:9000/',
         changeOrigin:true,
         pathRewrite:{
           '^/api':"api"
