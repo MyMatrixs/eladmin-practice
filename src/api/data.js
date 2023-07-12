@@ -3,7 +3,7 @@ import qs from 'qs'
 
 export function initData(url,parse){
     return request({
-        url:url+qs.stringify(parse,{indices:false}),
+        url:url+'?'+qs.stringify(parse,{indices:false}),
         method:'get'
     })
 }
