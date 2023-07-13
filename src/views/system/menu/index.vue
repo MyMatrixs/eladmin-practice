@@ -7,11 +7,11 @@
     <el-table
       :data="crud.data"
       style="width: 100%"
-      row-key="id"
+      row-key="menuId"
       border
       lazy
       :load="loadData"
-      :tree-props="{children: 'children', hasChildren: 'hasChildren'}">
+      :tree-props="{children: 'children', hasChildren: 'subCount'}">
       <el-table-column type="selection" width="55"></el-table-column>
       <el-table-column prop="title" label="菜单标题" width="125px"></el-table-column>
       <el-table-column prop="icon" label="图标" width="65px"></el-table-column>
@@ -44,19 +44,11 @@ export default {
     mixins:[presenter(),crud()],
     methods:{
       loadData(tree, treeNode, resolve){
-        console.log('进入表格')
+        const params = {pid:tree.menuId}
         setTimeout(() => {
-            resolve([
-            {
-              id: 31,
-              date: '2016-05-01',
-              name: 'wangxiaohu'
-            }, {
-              id: 32,
-              date: '2016-05-01',
-              name: 'wangxiaohu'
-            }
-          ])
+            crudMenus.getMenus(params).then(res=>{
+              resolve(res.info)
+            })
         }, 1000);
 
       }
