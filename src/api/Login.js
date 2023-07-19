@@ -1,4 +1,10 @@
 import requset from '../utils/request'
+import axios from 'axios'
+
+const service = axios.create({
+    baseURL:"/",
+    timeout:5000
+})
 
 export function login(username,password,code,uuid){
     return requset({
@@ -19,7 +25,7 @@ export function getInfo(){
     })
 }
 export function getCodeImg(){
-    return requset({
+    return service({
         url:'auth/code',
         method:'get'
     })

@@ -5,28 +5,65 @@
       <el-button>搜索</el-button>
       <div><crudOperation :permission="permission"></crudOperation></div>
     </div>
-    <el-dialog :visible="crud.status.cu > 0" append-to-body :before-close="crud.cancelCU" :title="crud.status.title" width="500px">
-      <el-form ref="form" :model="form">
-        <el-form-item label="菜单类型" prop="type" style="width:300px">
-          <el-radio-group v-model="form.type">
+    <el-dialog :visible="crud.status.cu > 0" append-to-body :before-close="crud.cancelCU" :title="crud.status.title" width="600px">
+      <el-form ref="form" :model="form" size='small' :inline="true">
+        <el-form-item label="菜单类型" prop="type" style="width:180px" :inline="true">
+          <el-radio-group v-model="form.type" size='mini'>
             <el-radio-button label="0">目录</el-radio-button>
             <el-radio-button label="1">菜单</el-radio-button>
             <el-radio-button label="2">按钮</el-radio-button>
           </el-radio-group>
         </el-form-item>
-        <el-form-item v-show="form.type.toString()!=='2'" label="菜单图标" prop="icon"></el-form-item>
-        <el-form-item v-show="form.type.toString()!=='2'" label="菜单外链" prop="icon"></el-form-item>
-        <el-form-item v-show="form.type.toString()!=='1'" label="菜单缓存" prop="icon"></el-form-item>
-        <el-form-item v-show="form.type.toString()!=='2'" label="菜单可见" prop="icon"></el-form-item>
-        <el-form-item v-show="form.type.toString()!=='2'" label="菜单标题" prop="icon"></el-form-item>
-        <el-form-item v-show="form.type.toString()!=='2'" label="按钮名称" prop="icon"></el-form-item>
-        <el-form-item v-show="form.type.toString()!=='0'" label="权限标识" prop="icon"></el-form-item>
-        <el-form-item v-show="form.type.toString()!=='2'" label="路由地址" prop="icon"></el-form-item>
-        <el-form-item v-show="form.type.toString()!=='2'" label="菜单排序" prop="icon"></el-form-item>
-        <el-form-item v-show="form.type.toString()!=='2'" label="组件名称" prop="icon"></el-form-item>
-        <el-form-item v-show="form.type.toString()!=='2'" label="组建路径" prop="icon"></el-form-item>
-        <el-form-item v-show="form.type.toString()!=='2'" label="上级类目" prop="icon"></el-form-item>
+        <el-form-item v-show="form.type.toString()!=='2'" label="菜单图标" prop="icon">
+            <el-input style="width:'500px'"/>
+        </el-form-item>
+        <el-form-item v-show="form.type.toString()!=='2'" label="菜单外链" prop="icon">
+          <el-radio-group v-model="form.iFrame" size="mini">
+            <el-radio-button label="True">是</el-radio-button>
+            <el-radio-button label="False">否</el-radio-button>
+          </el-radio-group>
+        </el-form-item>
+        <el-form-item v-show="form.type.toString()!=='1'" label="菜单缓存" prop="icon">
+          <el-radio-group v-model="form.cache" size="mini">
+            <el-radio-button label="True">是</el-radio-button>
+            <el-radio-button label="False">否</el-radio-button>
+          </el-radio-group>
+        </el-form-item>
+        <el-form-item v-show="form.type.toString()!=='2'" label="菜单可见" prop="icon">
+          <el-radio-group v-model="form.hidden" size="mini">
+            <el-radio-button label="True">是</el-radio-button>
+            <el-radio-button label="False">否</el-radio-button>
+          </el-radio-group>
+        </el-form-item>
+        <el-form-item v-show="form.type.toString()!=='2'" label="菜单标题" prop="icon">
+          <el-input v-model="form.title" :style="form.type.toString==='0'?'width:450px':'width:170px'" placeholder="菜单标题"/>
+        </el-form-item>
+        <el-form-item v-show="form.type.toString()!=='2'" label="按钮名称" prop="icon">
+          <el-input/>
+        </el-form-item>
+        <el-form-item v-show="form.type.toString()!=='0'" label="权限标识" prop="icon">
+          <el-input v-model="form.permission" :disabled="form.iFrame.toString()==='true'" placeholder="权限标识" style="width:180px"/>
+        </el-form-item>
+        <el-form-item v-show="form.type.toString()!=='2'" label="路由地址" prop="icon">
+          <el-input v-model="form.path" placeholder="路由地址" style="width:180px"/>
+        </el-form-item>
+        <el-form-item v-show="form.type.toString()!=='2'" label="菜单排序" prop="icon">
+          <el-input-number v-model.number="form.menuSort" :min='0' :max='999' controls-position='right' style="width:178px" />
+        </el-form-item>
+        <el-form-item v-show="form.type.toString()!=='2'" label="组件名称" prop="icon">
+          <el-input v-model="form.componentName" placeholder="匹配组件内的ConponentName" style="width:180px"/>
+        </el-form-item>
+        <el-form-item v-show="form.type.toString()!=='2'" label="组建路径" prop="icon">
+          <el-input v-model="form.component" placeholder="组件路径" style="width:180px"/>
+        </el-form-item>
+        <el-form-item v-show="form.type.toString()!=='2'" label="上级类目" prop="icon">
+          <el-input v-model="form.pid" placeholder="上级pid" style="width:180px"/>
+        </el-form-item>
       </el-form>
+      <div slot="footer">
+        <el-button @click="crud.cancelCU">取消</el-button>
+        <el-button  type='primary' @click="crud.submitCU">确认</el-button>
+      </div>
     </el-dialog>
     <el-table
       :data="crud.data"
@@ -80,7 +117,7 @@ export default {
             crudMenus.getMenus(params).then(res=>{
               resolve(res.info)
             })
-        }, 1000);
+        }, 0);
 
       },
     }

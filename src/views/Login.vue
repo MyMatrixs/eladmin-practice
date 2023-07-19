@@ -73,6 +73,7 @@ export default {
       },
       getCode(){
         getCodeImg().then(res=>{
+          res = res.data
           this.codeURL = res.img
           this.logonForm.uuid = res.uuid
         })

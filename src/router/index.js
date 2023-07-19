@@ -6,7 +6,7 @@ import menuTrees from '../api/createMenu.js'
 import {filterAsyncRouter} from '../store/modules/permission.js'
 import {routerMAP} from './routers.js'
 import { getToken } from '@/utils/auth.js'
-
+import {buildMenus} from '../api/system/menu.js'
 Vue.use(VueRouter)
 
 
@@ -89,6 +89,18 @@ router.beforeEach((to,from,next)=>{
 
 export default router
 
+export const loadMenus2 = (next,to)=>{
+  buildMenus().then(res=>{
+    const newRouter = filterAsyncRouter(res)
+    console.log(newRouter)
+    for(let i=0;i<newRouter.length;i++){
+      router.addRoute(newRouter[i])
+    }
+    console.log(router)
+    store.dispatch('SetSiderbarRouter',res)
+    next({ ...to, replace: true })
+  })
+}
 
 export const loadMenus = (menuTree,next,to)=>{
   const newRouter = filterAsyncRouter(menuTree)

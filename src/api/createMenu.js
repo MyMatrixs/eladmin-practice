@@ -12,7 +12,7 @@ const menuTrees = [
       name:'系统管理',
       component:'layout/index.vue',
       title:'系统管理',
-      path:'/system',
+      path:'/local_system',
       children:[
         {
           alwaysShow:true,
