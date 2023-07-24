@@ -23,6 +23,20 @@ export function add(data){
         data
     })
 }
+export function edit(data){
+    return request({
+        url:'system/menu',
+        method:'put',
+        data
+    })
 
+}
+export function del(ids){
+    return request({
+        url:'system/menu',
+        method:'delete',
+        data:ids
+    })
+}
 
-export default { getMenus,add}
+export default { getMenus,add,edit,del}

@@ -3,7 +3,7 @@
     <div id = 'header-con'>
       <el-input size="small" style="width:200px"></el-input>
       <el-button>搜索</el-button>
-      <div><crudOperation :permission="permission"></crudOperation></div>
+      <div><crudOperation :permission="permission"/></div>
     </div>
     <el-dialog :visible="crud.status.cu > 0" append-to-body :before-close="crud.cancelCU" :title="crud.status.title" width="600px">
       <el-form ref="form" :model="form" size='small' :inline="true">
@@ -71,6 +71,9 @@
       row-key="menuId"
       border
       lazy
+      @select='crud.selectChange'
+      @select-all="crud.selectAllChange"
+      @selection-change="crud.selectionChangeHandler"
       :load="loadData"
       :tree-props="{children: 'children', hasChildren: 'subCount'}">
       <el-table-column type="selection" width="55"></el-table-column>

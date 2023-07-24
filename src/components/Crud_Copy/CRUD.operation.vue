@@ -5,7 +5,7 @@
       <slot name="left" />
       <el-button
         v-if="crud.optShow.add"
-        v-permission="permission.add"
+        :permission="permission.add"
         class="filter-item"
         size="mini"
         type="primary"
@@ -16,7 +16,7 @@
       </el-button>
       <el-button
         v-if="crud.optShow.edit"
-        v-permission="permission.edit"
+        :permission="permission.edit"
         class="filter-item"
         size="mini"
         type="success"
@@ -29,7 +29,7 @@
       <el-button
         v-if="crud.optShow.del"
         slot="reference"
-        v-permission="permission.del"
+        :permission="permission.del"
         class="filter-item"
         type="danger"
         icon="el-icon-delete"
