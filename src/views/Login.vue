@@ -34,7 +34,7 @@ export default {
             input:'',
             codeURL:'',
             logonForm:{
-              username:'admin',
+              username:'admin_wwl',
               password:'123456',
               code:'',
               remeberMe:false,

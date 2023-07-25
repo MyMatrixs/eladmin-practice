@@ -2,7 +2,7 @@ import request from "@/utils/request"
 
 export function buildMenus(){
     return request({
-        url:'system/menu/build',
+        url:'api/system/menu/build',
         method:'get',
     })
 }   
@@ -10,7 +10,7 @@ export function buildMenus(){
 export function getMenus(params){
     console.log(params)
     return request({
-        url:'system/menu',
+        url:'api/system/menu',
         method:'get',
         params
     })
@@ -18,14 +18,14 @@ export function getMenus(params){
 
 export function add(data){
     return request({
-        url:'system/menu',
+        url:'api/system/menu',
         method:'post',
         data
     })
 }
 export function edit(data){
     return request({
-        url:'system/menu',
+        url:'api/system/menu',
         method:'put',
         data
     })
@@ -33,7 +33,7 @@ export function edit(data){
 }
 export function del(ids){
     return request({
-        url:'system/menu',
+        url:'api/system/menu',
         method:'delete',
         data:ids
     })

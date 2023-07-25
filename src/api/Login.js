@@ -8,7 +8,7 @@ const service = axios.create({
 
 export function login(username,password,code,uuid){
     return requset({
-        url:'auth/login',
+        url:'api/auth/login',
         method:'post',
         data:{
             username,
@@ -20,19 +20,19 @@ export function login(username,password,code,uuid){
 }
 export function getInfo(){
     return requset({
-        url:'auth/info',
+        url:'api/auth/info',
         method:'get'
     })
 }
 export function getCodeImg(){
     return service({
-        url:'auth/code',
+        url:'api/auth/code',
         method:'get'
     })
 }
 export function logout(){
     return requset({
-        url:'auth/logout',
+        url:'api/auth/logout',
         method:'delete'
     })
 }

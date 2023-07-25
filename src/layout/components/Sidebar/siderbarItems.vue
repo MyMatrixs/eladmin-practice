@@ -1,6 +1,6 @@
 <template>
   <div v-if="item.alwaysShow">
-    <template v-if="typeof(item.children)==='undefined'||(justOneShowChild(item.children)&&(!this.zerochild))">
+    <template v-if="item.children===null||(justOneShowChild(item.children)&&(!this.zerochild))">
         <AppLink :to="basePath">
             <el-menu-item :index='item.path'>
                 <item :title="item.title"></item>

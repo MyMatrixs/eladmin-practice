@@ -16,9 +16,8 @@ const permission={
     },
     actions:{
         SetSiderbarRouter(context,routers){
-
             setTimeout(() => {
-                context.commit('SET_SIDEBAR_ROUTERS',filterAsyncRouter(routers))
+                context.commit('SET_SIDEBAR_ROUTERS',filterAsyncRouter(routers,true))
             }, 10);
         }
     },
@@ -26,15 +25,18 @@ const permission={
 
 export default permission
 
-export const filterAsyncRouter = (routers)=>{
+export const filterAsyncRouter = (routers,isParent)=>{
     return routers.filter(router =>{
         if(router.component){
             if(typeof(router.component)=="string"){
                 router.component = loadView(router.component)
             }
         }
-        if(!(typeof router.children === 'undefined')){
-            router.children  = filterAsyncRouter(router.children)
+        if(router.path.startsWith("/")&&(!isParent)){
+            router.path = router.path.substring(1)
+        }
+        if(!(router.children === null)){
+            router.children  = filterAsyncRouter(router.children,false)
         }
         return true
     })

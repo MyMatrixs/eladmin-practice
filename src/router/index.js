@@ -32,7 +32,7 @@ router.beforeEach((to,from,next)=>{
       if(!store.getters.user.username){
         store.dispatch('GetInfo').then(()=>{
           store.dispatch('updateLoadMenus')
-          loadMenus(menuTrees,next,to)
+          loadMenus(next,to)
         }).catch(
           err=>{
             store.dispatch('LogOut').then(()=>{
@@ -43,7 +43,7 @@ router.beforeEach((to,from,next)=>{
       }else if(store.getters.loadMenus){
         console.log('已经获取信息，还没加载菜单')
         store.dispatch('updateLoadMenus')
-        loadMenus(menuTrees,next,to)
+        loadMenus(next,to)
       }else{
         console.log('已经获取信息，加载了菜单')
         next()
@@ -89,9 +89,9 @@ router.beforeEach((to,from,next)=>{
 
 export default router
 
-export const loadMenus2 = (next,to)=>{
+export const loadMenus = (next,to)=>{
   buildMenus().then(res=>{
-    const newRouter = filterAsyncRouter(res)
+    const newRouter = filterAsyncRouter(res,true)
     console.log(newRouter)
     for(let i=0;i<newRouter.length;i++){
       router.addRoute(newRouter[i])
@@ -102,8 +102,8 @@ export const loadMenus2 = (next,to)=>{
   })
 }
 
-export const loadMenus = (menuTree,next,to)=>{
-  const newRouter = filterAsyncRouter(menuTree)
+export const loadMenus2 = (menuTree,next,to)=>{
+  const newRouter = filterAsyncRouter(menuTree,true)
   console.log(newRouter)
   for(let i=0;i<newRouter.length;i++){
     router.addRoute(newRouter[i])

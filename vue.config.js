@@ -11,13 +11,6 @@ module.exports = defineConfig({
     port:port,
     open:true,
     proxy:{
-      '/auth':{
-        target:'http://localhost:9000/',
-        changeOrigin:true,
-        pathRewrite:{
-          '^/auth':"auth"
-        }
-      },
       '/api':{
         target:'http://localhost:9000/',
         changeOrigin:true,
@@ -25,13 +18,6 @@ module.exports = defineConfig({
           '^/api':"api"
         }
       },
-      '/system': {
-        target: 'http://localhost:9000/',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/system': 'system'
-        }
-      }
     }
   },
   configureWebpack() {
