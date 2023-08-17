@@ -32,6 +32,9 @@ export const filterAsyncRouter = (routers,isParent)=>{
                 router.component = loadView(router.component)
             }
         }
+        if(router.path==null){
+            return
+        }
         if(router.path.startsWith("/")&&(!isParent)){
             router.path = router.path.substring(1)
         }

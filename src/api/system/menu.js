@@ -16,6 +16,13 @@ export function getMenus(params){
     })
 }
 
+export function getMenusTree(pid){
+    return request({
+        url:'api/system/menu/lazy?'+(pid=='null'?'':'pid='+pid),
+        method:'get'
+    })
+}
+
 export function add(data){
     return request({
         url:'api/system/menu',
@@ -39,4 +46,4 @@ export function del(ids){
     })
 }
 
-export default { getMenus,add,edit,del}
+export default { getMenus,getMenusTree,add,edit,del}
