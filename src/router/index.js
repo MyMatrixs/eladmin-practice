@@ -94,6 +94,7 @@ export const loadMenus = (next,to)=>{
     const newRouter = filterAsyncRouter(res,true)
     console.log(newRouter)
     for(let i=0;i<newRouter.length;i++){
+      newRouter[i].name = newRouter[i].title
       router.addRoute(newRouter[i])
     }
     console.log(router)
